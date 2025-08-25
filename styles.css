@@ -1,0 +1,219 @@
+/* ============================
+   Cartoon Meadow Theme (styles.css)
+   ============================ */
+
+/* 1) Fun display font */
+@import url('https://fonts.googleapis.com/css2?family=Super+Funky&display=swap');
+
+:root{
+  --sky-top:#b3e5ff;
+  --sky-bottom:#e9f6ff;
+  --hill-1:#a2d18e;
+  --hill-2:#86c37a;
+  --meadow:#7ad46e;
+  --meadow-shadow:#5fb85a;
+  --sun:#ffd25a;
+  --cloud:#ffffffcc;
+  --text:#1d2b1d;
+  --card:#ffffffee;
+  --accent:#ff7aa2;
+}
+
+/* 2) Page + background meadow */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  overflow-x:hidden;
+  color:var(--text);
+  font-family:"Super Funky", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight:400;
+  letter-spacing:.3px;
+
+  /* Layered, cartoon meadow background */
+  background:
+    /* birds (tiny 'V' shapes) */
+    radial-gradient(1px 2px at 12% 18%, #00000029 98%, transparent 100%),
+    radial-gradient(1px 2px at 16% 22%, #00000029 98%, transparent 100%),
+    radial-gradient(1px 2px at 78% 16%, #00000029 98%, transparent 100%),
+    radial-gradient(1px 2px at 84% 21%, #00000029 98%, transparent 100%),
+
+    /* wildflowers (dots & petals) */
+    radial-gradient(6px 6px at 20% 90%, #fff 45%, transparent 46%),
+    radial-gradient(3px 3px at 20% 90%, #ffd1e1 40%, transparent 41%),
+    radial-gradient(6px 6px at 45% 88%, #fff 45%, transparent 46%),
+    radial-gradient(3px 3px at 45% 88%, #ffd1e1 40%, transparent 41%),
+    radial-gradient(6px 6px at 68% 92%, #fff 45%, transparent 46%),
+    radial-gradient(3px 3px at 68% 92%, #ffd1e1 40%, transparent 41%),
+    radial-gradient(6px 6px at 82% 86%, #fff 45%, transparent 46%),
+    radial-gradient(3px 3px at 82% 86%, #ffd1e1 40%, transparent 41%),
+    radial-gradient(6px 6px at 32% 94%, #fff 45%, transparent 46%),
+    radial-gradient(3px 3px at 32% 94%, #ffd1e1 40%, transparent 41%),
+
+    /* sun */
+    radial-gradient(circle at 12% 14%, var(--sun) 0 70px, transparent 72px),
+
+    /* soft clouds */
+    radial-gradient(60px 30px at 30% 18%, var(--cloud) 50%, transparent 51%),
+    radial-gradient(80px 35px at 38% 14%, var(--cloud) 50%, transparent 51%),
+    radial-gradient(70px 30px at 75% 20%, var(--cloud) 50%, transparent 51%),
+    radial-gradient(90px 36px at 70% 12%, var(--cloud) 50%, transparent 51%),
+
+    /* distant rolling hills */
+    radial-gradient(800px 220px at 20% 68%, var(--hill-1) 60%, transparent 61%),
+    radial-gradient(900px 260px at 80% 72%, var(--hill-2) 60%, transparent 61%),
+
+    /* foreground meadow with a subtle striping */
+    linear-gradient(0deg, var(--meadow) 40%, var(--meadow-shadow) 80%),
+
+    /* sky */
+    linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+
+  background-repeat:no-repeat;
+  background-size:
+    auto, auto, auto, auto,                 /* birds */
+    24px 24px, 10px 10px, 24px 24px, 10px 10px, 24px 24px, 10px 10px,
+    24px 24px, 10px 10px, 24px 24px, 10px 10px,  /* flowers */
+    auto,                                    /* sun */
+    auto, auto, auto, auto,                  /* clouds */
+    140% 60%, 150% 68%,                      /* hills */
+    100% 38%,                                /* meadow */
+    100% 62%;                                /* sky */
+
+  background-position:
+    12% 18%, 16% 22%, 78% 16%, 84% 21%,
+    20% 90%, 20% 90%, 45% 88%, 45% 88%, 68% 92%, 68% 92%,
+    82% 86%, 82% 86%, 32% 94%, 32% 94%,
+    12% 14%,
+    30% 18%, 38% 14%, 75% 20%, 70% 12%,
+    0% 86%, 100% 88%,
+    50% 100%,
+    50% 0%;
+}
+
+/* 3) Redwood trunks down the sides */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:min(16vw,160px);
+  z-index:0;
+  pointer-events:none;
+  filter: drop-shadow(0 0 10px #00000022);
+}
+
+/* Bark texture using layered gradients (no external images) */
+@keyframes sway {
+  0%,100% { transform: translateY(0) }
+  50% { transform: translateY(-6px) }
+}
+
+body::before{
+  left:0;
+  background:
+    /* foliage edge */
+    linear-gradient(90deg, #2f6b2a 0 12px, #2f6b2a00 60px),
+    /* mossy highlights */
+    radial-gradient(30px 20px at 35% 12%, #3f8b3a88 40%, transparent 45%),
+    radial-gradient(24px 16px at 25% 28%, #3f8b3a66 40%, transparent 45%),
+    radial-gradient(26px 18px at 40% 44%, #3f8b3a7a 40%, transparent 45%),
+    /* bark planks */
+    repeating-linear-gradient(90deg, #7b3f18 0 36px, #6e3613 36px 72px),
+    /* vertical grooves */
+    repeating-linear-gradient(180deg, #0000000e 0 3px, #0000 3px 38px);
+  background-blend-mode: multiply, normal, normal, normal, overlay;
+  animation: sway 6s ease-in-out infinite;
+}
+
+body::after{
+  right:0;
+  background:
+    linear-gradient(270deg, #2f6b2a 0 12px, #2f6b2a00 60px),
+    radial-gradient(30px 20px at 65% 16%, #3f8b3a88 40%, transparent 45%),
+    radial-gradient(24px 16px at 72% 32%, #3f8b3a66 40%, transparent 45%),
+    radial-gradient(26px 18px at 58% 48%, #3f8b3a7a 40%, transparent 45%),
+    repeating-linear-gradient(90deg, #7b3f18 0 36px, #6e3613 36px 72px),
+    repeating-linear-gradient(180deg, #0000000e 0 3px, #0000 3px 38px);
+  background-blend-mode: multiply, normal, normal, normal, overlay;
+  animation: sway 6s ease-in-out infinite reverse;
+}
+
+/* 4) Content wrapper (keeps text from sitting under the trees) */
+.container{
+  position:relative;
+  z-index:1;
+  max-width:1100px;
+  margin:0 auto;
+  padding: clamp(16px, 3vw, 32px);
+  /* keep clear of trunks */
+  padding-left: calc(clamp(16px,3vw,32px) + min(16vw,160px));
+  padding-right: calc(clamp(16px,3vw,32px) + min(16vw,160px));
+}
+
+/* 5) Fun, readable type */
+h1,h2,h3{
+  margin:0 0 .4em 0;
+  line-height:1.05;
+  text-shadow: 0 2px 0 #00000010, 0 6px 12px #00000018;
+}
+h1{ font-size: clamp(2.2rem, 5vw, 4rem); color:#1a4f1a; }
+h2{ font-size: clamp(1.6rem, 3.6vw, 2.4rem); color:#1f6120; }
+h3{ font-size: clamp(1.3rem, 3vw, 1.8rem); color:#264f26; }
+
+p, li{
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height:1.4;
+}
+
+/* 6) Playful UI bits */
+.card{
+  background:var(--card);
+  border:3px solid #2a6b2a;
+  border-radius:22px;
+  padding: clamp(14px, 2.2vw, 22px);
+  box-shadow: 0 10px 0 #225522, 0 12px 22px #00000018;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.card:hover{ transform: translateY(-2px); box-shadow: 0 12px 0 #225522, 0 16px 26px #00000022; }
+
+.button{
+  display:inline-block;
+  border:3px solid #2a6b2a;
+  background: radial-gradient(100% 100% at 50% 0%, #fff 0%, #f7ffe8 100%);
+  padding:.7rem 1.1rem;
+  border-radius:16px;
+  text-decoration:none;
+  color:#1e3f1e;
+  box-shadow: 0 6px 0 #225522;
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.button:active{ transform: translateY(3px); box-shadow: 0 3px 0 #225522; }
+
+/* 7) Simple nav */
+nav{
+  position:sticky; top:0; z-index:2;
+  margin:0 0 1rem 0;
+  backdrop-filter: blur(4px);
+  background:#ffffff88;
+  border-bottom:3px solid #2a6b2a;
+}
+nav ul{
+  list-style:none; margin:0; padding:.6rem clamp(10px,2vw,18px);
+  display:flex; gap: clamp(8px, 2vw, 18px); flex-wrap:wrap;
+}
+nav a{
+  color:#1f4f1f; text-decoration:none; padding:.35rem .6rem; border-radius:12px;
+}
+nav a:hover{ background:#e9ffe1; outline:2px dashed #2a6b2a; outline-offset:3px; }
+
+/* 8) Responsive helpers */
+img, video{ max-width:100%; height:auto; border-radius:14px; }
+section{ margin: clamp(16px, 3vw, 28px) 0; }
+
+/* 9) Accessibility contrast tweak on meadow areas */
+@media (prefers-contrast: more){
+  :root{ --text:#0f1a0f }
+  .card, nav{ background:#fffffffa }
+}
