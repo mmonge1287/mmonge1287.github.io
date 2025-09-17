@@ -17,3 +17,8 @@ The article presents a flexible infrared-sensitive video surveillance system tha
 [Design and application of a novel 3D printing method for bio-inspired artificial reefs](https://www.sciencedirect.com/science/article/abs/pii/S0925857423000010)
 
 This study introduces a novel Gravity-Stimulated Printing Design (GSPD) method using eco-friendly ceramic 3D printing to create morphologically complex artificial reefs, which successfully supported diverse marine life after deployment in the Red Sea.
+
+
+[3D printed artificial coral reefs: design and manufacture](https://link.springer.com/article/10.1007/s44242-024-00056-4)
+
+This study presents innovative 3D concrete printing designs and manufacturing methods for artificial coral reefs that mimic natural reef structures to restore marine ecosystems and promote sustainable development.
